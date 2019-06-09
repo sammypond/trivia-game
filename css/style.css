@@ -1,0 +1,29 @@
+#qs {
+    margin-top: 5em;
+    text-align: center;
+}
+
+#as {
+    text-align: center;
+    margin-top: 10em;
+}
+
+#container {
+    margin-top: 20px;
+    min-width: 100vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #ateam {
+      margin-right: 150px;
+      margin-top: 100px;
+  }
+
+  #bteam {
+    margin-left: 150px;
+    margin-top: 100px;
+
+}
