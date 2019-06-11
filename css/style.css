@@ -19,12 +19,12 @@
 
   #ateam {
       margin-right: 150px;
-      margin-top: 100px;
+      margin-top: 30px;
   }
 
   #bteam {
     margin-left: 150px;
-    margin-top: 100px;
+    margin-top: 30px;
 }
 
 #invisible {
@@ -34,8 +34,13 @@
     color: red;
 }
 
-input {
-    height: 15px;
-    width: 20px;
+#wager {
+    margin-top: 30px;
+    height: 20px;
+    width: 120px;
+}
+
+#buttonz {
+    margin-bottom: 30px;
 }
 
