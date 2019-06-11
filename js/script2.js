@@ -36,8 +36,9 @@ var scoreb = document.getElementById('scoreb');
 var wrongMessage = document.getElementById('invisible');
 var correct;
 var myAnswers;
-var correct = answer
+var correct = answer;
 var buttonz = document.getElementById('buttonz');
+var wager = document.getElementById('wager');
 
 //call JSON query 
 // function whoseTurn() {
@@ -103,13 +104,25 @@ fetch(aPi)
 answerButtons.addEventListener('click', function (e) {
     turnCounter++;
     if (e.target.value == answer && turnCounter % 2 !== 0) {
-        ascore = ascore + 1;
+        var wagerAmount = wager.value;
+        console.log(wagerAmount);
+        var integer = parseInt(wagerAmount, 10);
+        console.log(integer);
+        
+        ascore = ascore + integer;
         scorea.textContent = ascore;
+        wager.value = '';
 
 
     } else if (e.target.value == answer && turnCounter % 2 === 0) {
-        bscore = bscore + 1;
+        var wagerAmount = wager.value;
+        console.log(wagerAmount);
+        var integer = parseInt(wagerAmount, 10);
+        console.log(integer);
+
+        bscore = bscore + integer;
         scoreb.textContent = bscore;
+        wager.value = '';
 
     } else {
         alert('Incorrect!');

@@ -36,11 +36,25 @@
 
 #wager {
     margin-top: 30px;
-    height: 20px;
-    width: 120px;
+    height: 100px;
+    width: 200px;
+    background-color: royalblue;
+    color: white;
 }
 
 #buttonz {
     margin-bottom: 30px;
 }
 
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: pink;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: pink;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: pink;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: pink;
+  }
