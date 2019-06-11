@@ -6,9 +6,8 @@ var asTurn;
 var bsTurn;
 var ascore = 0;
 var bscore = 0;
-var aPie;
-var bPie;
-var aPi = "https://opentdb.com/api.php?amount=50&category=23&type=multiple";
+//var aPi = "https://opentdb.com/api.php?amount=50&category=23&type=multiple";
+var aPi;
 var questionIndex = 0;
 var questionBox;
 var input = document.getElementById('input');
@@ -38,7 +37,7 @@ var wrongMessage = document.getElementById('invisible');
 var correct;
 var myAnswers;
 var correct = answer
-var wager = document.getElementById('wager').value;
+var buttonz = document.getElementById('buttonz');
 
 //call JSON query 
 // function whoseTurn() {
@@ -51,15 +50,28 @@ var wager = document.getElementById('wager').value;
 //     }
 // }
 
+buttonz.addEventListener('click', function(e){
+    if(e.target.id === "history"){
+        console.log(e.target.id);
+        aPi = "https://opentdb.com/api.php?amount=50&category=23&type=multiple";
+    } else if(e.target.id === "geography"){
+        aPi = "https://opentdb.com/api.php?amount=50&category=22&type=multiple";
+    } else if(e.target.id === "sports"){
+        aPi = "https://opentdb.com/api.php?amount=50&category=21&type=multiple";
+    } else if(e.target.id === "general"){
+        aPi = "https://opentdb.com/api.php?amount=50&category=9&type=multiple";
+    }
+
 
 fetch(aPi)
     .then(function (results) {
         return results.json();
     })
     .then(function (json) {
-
         questions = json.results;
+        console.log(json.results);
         question = questions[0].question;
+        console.log(questions[0].question);
         answer = questions[0].correct_answer;
         false1 = questions[0].incorrect_answers[0];
         false2 = questions[0].incorrect_answers[1];
@@ -86,7 +98,7 @@ fetch(aPi)
         answerLabel4.textContent = false3;
         questionCounter++;
     })
-
+})
 
 answerButtons.addEventListener('click', function (e) {
     turnCounter++;
