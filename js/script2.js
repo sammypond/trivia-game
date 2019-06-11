@@ -101,6 +101,7 @@ fetch(aPi)
     })
 })
 
+
 answerButtons.addEventListener('click', function (e) {
     turnCounter++;
     if (e.target.value == answer && turnCounter % 2 !== 0) {
@@ -124,12 +125,21 @@ answerButtons.addEventListener('click', function (e) {
         scoreb.textContent = bscore;
         wager.value = '';
 
-    } else {
-        alert('Incorrect!');
+    } else if(e.target.value !== answer && turnCounter % 2 !== 0){
+        var wagerAmount = wager.value;
+        var integer = parseInt(wagerAmount, 10);
+        
+        ascore = ascore - integer;
+        scorea.textContent = ascore;
+        wager.value = '';
+    } else if(e.target.value !== answer && turnCounter % 2 === 0){
+        var wagerAmount = wager.value;
+        var integer = parseInt(wagerAmount, 10);
+        
+        bscore = bscore - integer;
+        scoreb.textContent = bscore;
+        wager.value = '';
     }
-
-
-
     questionCounter++;
     question = questions[questionCounter].question;
     questionBox.textContent = question;
