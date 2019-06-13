@@ -6,7 +6,6 @@ var asTurn;
 var bsTurn;
 var ascore = 0;
 var bscore = 0;
-//var aPi = "https://opentdb.com/api.php?amount=50&category=23&type=multiple";
 var aPi;
 var questionIndex = 0;
 var questionBox;
@@ -39,49 +38,177 @@ var myAnswers;
 var correct = answer;
 var buttonz = document.getElementById('buttonz');
 var wager = document.getElementById('wager');
+var category;
 
-//call JSON query 
-// function whoseTurn() {
-//     if (turnCounter % 2 !== 0) {
-//         var aboard = document.getElementById('aboard');
-//         aboard.textContent = "A's Turn";
-//     } else if (turnCounter % 2 === 0) {
-//         var aboard = document.getElementById('bboard');
-//         aboard.textContent = "B's Turn";
-//     }
-// }
+//open modal 
+document.addEventListener('DOMContentLoaded', function (e) {
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+    modal.style.display = "block";
 
-buttonz.addEventListener('click', function(e){
-    if(e.target.id === "history"){
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+})
+
+buttonz.addEventListener('click', function (e) {
+    if (e.target.id === "history") {
         console.log(e.target.id);
         aPi = "https://opentdb.com/api.php?amount=50&category=23&type=multiple";
-    } else if(e.target.id === "geography"){
+    } else if (e.target.id === "geography") {
         aPi = "https://opentdb.com/api.php?amount=50&category=22&type=multiple";
-    } else if(e.target.id === "sports"){
+    } else if (e.target.id === "sports") {
         aPi = "https://opentdb.com/api.php?amount=50&category=21&type=multiple";
-    } else if(e.target.id === "general"){
+    } else if (e.target.id === "general") {
         aPi = "https://opentdb.com/api.php?amount=50&category=9&type=multiple";
     }
 
 
-fetch(aPi)
-    .then(function (results) {
-        return results.json();
-    })
-    .then(function (json) {
-        questions = json.results;
-        console.log(json.results);
-        question = questions[0].question;
-        console.log(questions[0].question);
-        answer = questions[0].correct_answer;
-        false1 = questions[0].incorrect_answers[0];
-        false2 = questions[0].incorrect_answers[1];
-        false3 = questions[0].incorrect_answers[2];
+    fetch(aPi)
+        .then(function (results) {
+            return results.json();
+        })
+        .then(function (json) {
+            questions = json.results;
+            console.log(json.results);
+            question = questions[0].question;
+            category = questions[0].category;
+            console.log(category);
+            answer = questions[0].correct_answer;
+            false1 = questions[0].incorrect_answers[0];
+            false2 = questions[0].incorrect_answers[1];
+            false3 = questions[0].incorrect_answers[2];
+            questionBox = document.getElementById('question');
+            questionBox.innerHTML = question;
+            answerButtons = document.getElementsByTagName('input');
+            answerLabels = document.getElementsByTagName('label');
+            answerLabel1 = answerLabels[0]
+            answerLabel2 = answerLabels[1];
+            answerLabel3 = answerLabels[2];
+            answerLabel4 = answerLabels[3];
+            answer1 = answerButtons[0];
+            answer2 = answerButtons[1];
+            answer3 = answerButtons[2];
+            answer4 = answerButtons[3];
+            answer1.value = answer;
+            answer2.value = false1;
+            answer3.value = false2;
+            answer4.value = false3;
+            answerLabel1.innerHTML = answer;
+            answerLabel2.innerHTML = false1;
+            answerLabel3.innerHTML = false2;
+            answerLabel4.innerHTML = false3;
+            questionCounter++;
+        })
+})
+
+
+answerButtons.addEventListener('click', function (e) {
+    if (wager.value > 0 && wager.value <= 100) {
+        if (e.target.value == answer && turnCounter % 2 === 0) {
+            var wagerAmount = wager.value;
+            var integer = parseInt(wagerAmount, 10);
+
+            ascore = ascore + integer;
+            scorea.textContent = ascore;
+            wager.value = '10';
+            console.log(category);
+            if(category == "General Knowledge") {
+                var blueButton = document.getElementById('ageneral');
+                blueButton.style.backgroundColor = "white";
+            } else if(category == "Sports") {
+                var yellowButton = document.getElementById('asports');
+                yellowButton.style.backgroundColor = "white";
+            } else if(category == 'Geography') {
+                var redButton = document.getElementById('ageography')
+                redButton.style.backgroundColor = 'white';
+            } else if(category == "History") {
+                var greenButton = document.getElementById('ahistory');
+                greenButton.style.backgroundColor = 'white';
+            }
+
+            var modal = document.getElementById("correctmodal");
+            var span = document.getElementsByClassName("correctclose")[0];
+            modal.style.display = "block";
+
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+            
+
+        } else if (e.target.value == answer && turnCounter % 2 !== 0) {
+            var wagerAmount = wager.value;
+            var integer = parseInt(wagerAmount, 10);
+
+            bscore = bscore + integer;
+            scoreb.textContent = bscore;
+            wager.value = '10';
+
+            if(category == "General Knowledge") {
+                var blueButton = document.getElementById('bgeneral');
+                blueButton.style.backgroundColor = "white";
+            } else if(category == "Sports") {
+                var yellowButton = document.getElementById('bsports');
+                yellowButton.style.backgroundColor = "white";
+            } else if(category == 'Geography') {
+                var redButton = document.getElementById('bgeography')
+                redButton.style.backgroundColor = 'white';
+            } else if(category == "History") {
+                var greenButton = document.getElementById('bhistory');
+                greenButton.style.backgroundColor = 'white';
+            }
+
+            var modal = document.getElementById("correctmodal");
+            var span = document.getElementsByClassName("correctclose")[0];
+            modal.style.display = "block";
+
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+        } else if (e.target.value !== answer && turnCounter % 2 !== 0) {
+            var wagerAmount = wager.value;
+            var integer = parseInt(wagerAmount, 10);
+
+            ascore = ascore - integer;
+            scorea.textContent = ascore;
+            wager.value = '10';
+            var modal = document.getElementById("wrongmodal");
+            var span = document.getElementsByClassName("wrongclose")[0];
+            modal.style.display = "block";
+
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+        } else if (e.target.value !== answer && turnCounter % 2 === 0) {
+            var wagerAmount = wager.value;
+            var integer = parseInt(wagerAmount, 10);
+
+            bscore = bscore - integer;
+            scoreb.textContent = bscore;
+            wager.value = '10';
+            var modal = document.getElementById("wrongmodal");
+            var span = document.getElementsByClassName("wrongclose")[0];
+            modal.style.display = "block";
+
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+        }
+
+        questionCounter++;
+        question = questions[questionCounter].question;
+        //questionBox.textContent = question;
+        category = questions[questionCounter].category;
+        console.log(category);
+        answer = questions[questionCounter].correct_answer;
+        false1 = questions[questionCounter].incorrect_answers[0];
+        false2 = questions[questionCounter].incorrect_answers[1];
+        false3 = questions[questionCounter].incorrect_answers[2];
         questionBox = document.getElementById('question');
         questionBox.innerHTML = question;
         answerButtons = document.getElementsByTagName('input');
         answerLabels = document.getElementsByTagName('label');
-        answerLabel1 = answerLabels[0]
+        answerLabel1 = answerLabels[0];
         answerLabel2 = answerLabels[1];
         answerLabel3 = answerLabels[2];
         answerLabel4 = answerLabels[3];
@@ -89,78 +216,17 @@ fetch(aPi)
         answer2 = answerButtons[1];
         answer3 = answerButtons[2];
         answer4 = answerButtons[3];
-        answer1.value = answer;
-        answer2.value = false1;
-        answer3.value = false2;
-        answer4.value = false3;
-        answerLabel1.textContent = answer;
-        answerLabel2.textContent = false1;
-        answerLabel3.textContent = false2;
-        answerLabel4.textContent = false3;
-        questionCounter++;
-    })
-})
+        turnCounter++;
+        shuffle();
+    } else {
+        var modal = document.getElementById("errormodal");
+            var span = document.getElementsByClassName("errorclose")[0];
+            modal.style.display = "block";
 
-
-answerButtons.addEventListener('click', function (e) {
-    turnCounter++;
-    if (e.target.value == answer && turnCounter % 2 !== 0) {
-        var wagerAmount = wager.value;
-        console.log(wagerAmount);
-        var integer = parseInt(wagerAmount, 10);
-        console.log(integer);
-        
-        ascore = ascore + integer;
-        scorea.textContent = ascore;
-        wager.value = '';
-
-
-    } else if (e.target.value == answer && turnCounter % 2 === 0) {
-        var wagerAmount = wager.value;
-        console.log(wagerAmount);
-        var integer = parseInt(wagerAmount, 10);
-        console.log(integer);
-
-        bscore = bscore + integer;
-        scoreb.textContent = bscore;
-        wager.value = '';
-
-    } else if(e.target.value !== answer && turnCounter % 2 !== 0){
-        var wagerAmount = wager.value;
-        var integer = parseInt(wagerAmount, 10);
-        
-        ascore = ascore - integer;
-        scorea.textContent = ascore;
-        wager.value = '';
-    } else if(e.target.value !== answer && turnCounter % 2 === 0){
-        var wagerAmount = wager.value;
-        var integer = parseInt(wagerAmount, 10);
-        
-        bscore = bscore - integer;
-        scoreb.textContent = bscore;
-        wager.value = '';
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
     }
-    questionCounter++;
-    question = questions[questionCounter].question;
-    questionBox.textContent = question;
-    answer = questions[questionCounter].correct_answer;
-    false1 = questions[questionCounter].incorrect_answers[0];
-    false2 = questions[questionCounter].incorrect_answers[1];
-    false3 = questions[questionCounter].incorrect_answers[2];
-    questionBox = document.getElementById('question');
-    questionBox.innerHTML = question;
-    answerButtons = document.getElementsByTagName('input');
-    answerLabels = document.getElementsByTagName('label');
-    answerLabel1 = answerLabels[0]
-    answerLabel2 = answerLabels[1];
-    answerLabel3 = answerLabels[2];
-    answerLabel4 = answerLabels[3];
-    answer1 = answerButtons[0];
-    answer2 = answerButtons[1];
-    answer3 = answerButtons[2];
-    answer4 = answerButtons[3];
-    shuffle();
-
     function shuffle(myAnswers) {
         myAnswers = [answer, false1, false2, false3];
         var i,
@@ -175,12 +241,11 @@ answerButtons.addEventListener('click', function (e) {
             answer2.value = myAnswers[1];
             answer3.value = myAnswers[2];
             answer4.value = myAnswers[3];
-            answerLabel1.textContent = myAnswers[0];
-            answerLabel2.textContent = myAnswers[1];
-            answerLabel3.textContent = myAnswers[2];
-            answerLabel4.textContent = myAnswers[3];
+            answerLabel1.innerHTML = myAnswers[0];
+            answerLabel2.innerHTML = myAnswers[1];
+            answerLabel3.innerHTML = myAnswers[2];
+            answerLabel4.innerHTML = myAnswers[3];
         }
-        console.log(myAnswers);
         return myAnswers;
 
 
@@ -189,3 +254,4 @@ answerButtons.addEventListener('click', function (e) {
 
 
 })
+
