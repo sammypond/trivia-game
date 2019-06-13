@@ -127,7 +127,7 @@ buttonz.addEventListener('click', function (e) {
 
 
 answerButtons.addEventListener('click', function (e) {
-    if (wager.value > 0 && wager.value <= 1000) {
+    if (wager.value > 0 && wager.value <= 200) {
         if (e.target.value == answer && turnCounter % 2 === 0) {
             var wagerAmount = wager.value;
             var integer = parseInt(wagerAmount, 10);
@@ -290,7 +290,7 @@ answerButtons.addEventListener('click', function (e) {
         span.onclick = function () {
             modal.style.display = "none";
         }
-    }
+    } 
     function shuffle(myAnswers) {
         myAnswers = [answer, false1, false2, false3];
         var i,
@@ -348,6 +348,16 @@ function checkWinner() {
         span.onclick = function () {
             modal.style.display = "none";
         }
+        scorea.textContent = "0";
+        scoreb.textContent = "0";
+        ablueButton.style.backgroundColor = 'blue';
+        ayellowButton.style.backgroundColor = 'yellow';
+        aredButton.style.backgroundColor = 'red';
+        agreenButton.style.backgroundColor = 'green';
+        bblueButton.style.backgroundColor = 'blue';
+        byellowButton.style.backgroundColor = 'yellow';
+        bredButton.style.backgroundColor = 'red';
+        bgreenButton.style.backgroundColor = 'green';
     } else if (finalScoreB >= 1000 && bSlicesArray.length === 0) {
         var modal = document.getElementById("bwinsmodal");
         var span = document.getElementsByClassName("bwinsclose")[0];
@@ -356,5 +366,15 @@ function checkWinner() {
         span.onclick = function () {
             modal.style.display = "none";
         }
+        scorea.textContent = "0";
+        scoreb.textContent = "0";
+        ablueButton.style.backgroundColor = 'blue';
+        ayellowButton.style.backgroundColor = 'yellow';
+        aredButton.style.backgroundColor = 'red';
+        agreenButton.style.backgroundColor = 'green';
+        bblueButton.style.backgroundColor = 'blue';
+        byellowButton.style.backgroundColor = 'yellow';
+        bredButton.style.backgroundColor = 'red';
+        bgreenButton.style.backgroundColor = 'green';
     }
 }
