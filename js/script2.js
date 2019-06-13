@@ -39,6 +39,14 @@ var correct = answer;
 var buttonz = document.getElementById('buttonz');
 var wager = document.getElementById('wager');
 var category;
+var ablueButton;
+var ayellowButton;
+var aredButton;
+var agreenButton;
+var bblueButton;
+var byellowButton;
+var bredButton;
+var bgreenButton;
 
 //open modal 
 document.addEventListener('DOMContentLoaded', function (e) {
@@ -99,32 +107,34 @@ buttonz.addEventListener('click', function (e) {
             answerLabel3.innerHTML = false2;
             answerLabel4.innerHTML = false3;
             questionCounter++;
+            console.log(turnCounter);
         })
 })
 
 
 answerButtons.addEventListener('click', function (e) {
-    if (wager.value > 0 && wager.value <= 100) {
+    if (wager.value > 0 && wager.value <= 1000) {
         if (e.target.value == answer && turnCounter % 2 === 0) {
             var wagerAmount = wager.value;
             var integer = parseInt(wagerAmount, 10);
+
 
             ascore = ascore + integer;
             scorea.textContent = ascore;
             wager.value = '10';
             console.log(category);
-            if(category == "General Knowledge") {
-                var blueButton = document.getElementById('ageneral');
-                blueButton.style.backgroundColor = "white";
-            } else if(category == "Sports") {
-                var yellowButton = document.getElementById('asports');
-                yellowButton.style.backgroundColor = "white";
-            } else if(category == 'Geography') {
-                var redButton = document.getElementById('ageography')
-                redButton.style.backgroundColor = 'white';
-            } else if(category == "History") {
-                var greenButton = document.getElementById('ahistory');
-                greenButton.style.backgroundColor = 'white';
+            if (category == "General Knowledge") {
+                var ablueButton = document.getElementById('ageneral');
+                ablueButton.style.backgroundColor = "white";
+            } else if (category == "Sports") {
+                var ayellowButton = document.getElementById('asports');
+                ayellowButton.style.backgroundColor = "white";
+            } else if (category == 'Geography') {
+                var aredButton = document.getElementById('ageography')
+                aredButton.style.backgroundColor = 'white';
+            } else if (category == "History") {
+                var agreenButton = document.getElementById('ahistory');
+                agreenButton.style.backgroundColor = 'white';
             }
 
             var modal = document.getElementById("correctmodal");
@@ -134,28 +144,30 @@ answerButtons.addEventListener('click', function (e) {
             span.onclick = function () {
                 modal.style.display = "none";
             }
-            
+
 
         } else if (e.target.value == answer && turnCounter % 2 !== 0) {
             var wagerAmount = wager.value;
             var integer = parseInt(wagerAmount, 10);
 
+
+
             bscore = bscore + integer;
             scoreb.textContent = bscore;
             wager.value = '10';
 
-            if(category == "General Knowledge") {
-                var blueButton = document.getElementById('bgeneral');
-                blueButton.style.backgroundColor = "white";
-            } else if(category == "Sports") {
-                var yellowButton = document.getElementById('bsports');
-                yellowButton.style.backgroundColor = "white";
-            } else if(category == 'Geography') {
-                var redButton = document.getElementById('bgeography')
-                redButton.style.backgroundColor = 'white';
-            } else if(category == "History") {
-                var greenButton = document.getElementById('bhistory');
-                greenButton.style.backgroundColor = 'white';
+            if (category == "General Knowledge") {
+                var bblueButton = document.getElementById('bgeneral');
+                bblueButton.style.backgroundColor = "white";
+            } else if (category == "Sports") {
+                var byellowButton = document.getElementById('bsports');
+                byellowButton.style.backgroundColor = "white";
+            } else if (category == 'Geography') {
+                var bredButton = document.getElementById('bgeography')
+                bredButton.style.backgroundColor = 'white';
+            } else if (category == "History") {
+                var bgreenButton = document.getElementById('bhistory');
+                bgreenButton.style.backgroundColor = 'white';
             }
 
             var modal = document.getElementById("correctmodal");
@@ -217,15 +229,16 @@ answerButtons.addEventListener('click', function (e) {
         answer3 = answerButtons[2];
         answer4 = answerButtons[3];
         turnCounter++;
+        console.log(turnCounter);
         shuffle();
     } else {
         var modal = document.getElementById("errormodal");
-            var span = document.getElementsByClassName("errorclose")[0];
-            modal.style.display = "block";
+        var span = document.getElementsByClassName("errorclose")[0];
+        modal.style.display = "block";
 
-            span.onclick = function () {
-                modal.style.display = "none";
-            }
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
     }
     function shuffle(myAnswers) {
         myAnswers = [answer, false1, false2, false3];
@@ -252,6 +265,14 @@ answerButtons.addEventListener('click', function (e) {
 
     };
 
-
+    // checkWinner();
 })
+console.log(ablueButton.backgroundColor);
 
+// function checkWinner() {
+//     if (ascore >= 1000 && ablueButton.backgroundColor === 'white' && ayellowButton.backgroundColor === 'white' && aredButton.backgroundColor === 'white' && agreenButton.backgroundColor === 'white') {
+//         alert('A is the winner');
+//     } else if (bscore >= 1000 && bblueButton.backgroundColor === 'white' && byellowButton.backgroundColor === 'white' && bredButton.backgroundColor === 'white' && bgreenButton.backgroundColor === 'white') {
+//         alert('B is the winner');
+//     }
+// }
