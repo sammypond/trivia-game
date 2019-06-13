@@ -39,14 +39,17 @@ var correct = answer;
 var buttonz = document.getElementById('buttonz');
 var wager = document.getElementById('wager');
 var category;
-var ablueButton;
-var ayellowButton;
-var aredButton;
-var agreenButton;
-var bblueButton;
-var byellowButton;
-var bredButton;
-var bgreenButton;
+var ablueButton = document.getElementById('ageneral');
+var ayellowButton = document.getElementById('asports');
+var aredButton = document.getElementById('ageography');
+var agreenButton = document.getElementById('ahistory');
+var bblueButton = document.getElementById('bgeneral');
+var byellowButton = document.getElementById('bsports');
+var bredButton = document.getElementById('bgeography');
+var bgreenButton = document.getElementById('bhistory');
+var reset = document.getElementById('reset');
+var aSlicesArray = ['blue', 'yellow', 'red', 'green'];
+var bSlicesArray = ['blue', 'yellow', 'red', 'green'];
 
 //open modal 
 document.addEventListener('DOMContentLoaded', function (e) {
@@ -107,9 +110,20 @@ buttonz.addEventListener('click', function (e) {
             answerLabel3.innerHTML = false2;
             answerLabel4.innerHTML = false3;
             questionCounter++;
-            console.log(turnCounter);
+            // asTurn();
+            // function asTurn() {
+            //     var modal = document.getElementById("aturnmodal");
+            //     var span = document.getElementsByClassName("aturnclose")[0];
+            //     modal.style.display = "block";
+
+            //     span.onclick = function () {
+            //         modal.style.display = "none";
+            //     }
+            // }
         })
 })
+
+
 
 
 answerButtons.addEventListener('click', function (e) {
@@ -124,17 +138,35 @@ answerButtons.addEventListener('click', function (e) {
             wager.value = '10';
             console.log(category);
             if (category == "General Knowledge") {
-                var ablueButton = document.getElementById('ageneral');
                 ablueButton.style.backgroundColor = "white";
+                remove(aSlicesArray, 'blue');
+                function remove(array, element) {
+                    const index = array.indexOf(element);
+                    array.splice(index, 1);
+                }
+                console.log(aSlicesArray);
             } else if (category == "Sports") {
-                var ayellowButton = document.getElementById('asports');
                 ayellowButton.style.backgroundColor = "white";
+                remove(aSlicesArray, 'yellow');
+                function remove(array, element) {
+                    const index = array.indexOf(element);
+                    array.splice(index, 1);
+                }
             } else if (category == 'Geography') {
-                var aredButton = document.getElementById('ageography')
                 aredButton.style.backgroundColor = 'white';
+                remove(aSlicesArray, 'red');
+                function remove(array, element) {
+                    const index = array.indexOf(element);
+                    array.splice(index, 1);
+                }
             } else if (category == "History") {
-                var agreenButton = document.getElementById('ahistory');
                 agreenButton.style.backgroundColor = 'white';
+                remove(aSlicesArray, 'green');
+                function remove(array, element) {
+                    const index = array.indexOf(element);
+                    array.splice(index, 1);
+                }
+                console.log(aSlicesArray);
             }
 
             var modal = document.getElementById("correctmodal");
@@ -157,17 +189,33 @@ answerButtons.addEventListener('click', function (e) {
             wager.value = '10';
 
             if (category == "General Knowledge") {
-                var bblueButton = document.getElementById('bgeneral');
                 bblueButton.style.backgroundColor = "white";
+                remove(bSlicesArray, 'blue');
+                function remove(array, element) {
+                    const index = array.indexOf(element);
+                    array.splice(index, 1);
+                }
             } else if (category == "Sports") {
-                var byellowButton = document.getElementById('bsports');
                 byellowButton.style.backgroundColor = "white";
+                remove(bSlicesArray, 'yellow');
+                function remove(array, element) {
+                    const index = array.indexOf(element);
+                    array.splice(index, 1);
+                }
             } else if (category == 'Geography') {
-                var bredButton = document.getElementById('bgeography')
                 bredButton.style.backgroundColor = 'white';
+                remove(bSlicesArray, 'red');
+                function remove(array, element) {
+                    const index = array.indexOf(element);
+                    array.splice(index, 1);
+                }
             } else if (category == "History") {
-                var bgreenButton = document.getElementById('bhistory');
                 bgreenButton.style.backgroundColor = 'white';
+                remove(bSlicesArray, 'green');
+                function remove(array, element) {
+                    const index = array.indexOf(element);
+                    array.splice(index, 1);
+                }
             }
 
             var modal = document.getElementById("correctmodal");
@@ -177,21 +225,8 @@ answerButtons.addEventListener('click', function (e) {
             span.onclick = function () {
                 modal.style.display = "none";
             }
+
         } else if (e.target.value !== answer && turnCounter % 2 !== 0) {
-            var wagerAmount = wager.value;
-            var integer = parseInt(wagerAmount, 10);
-
-            ascore = ascore - integer;
-            scorea.textContent = ascore;
-            wager.value = '10';
-            var modal = document.getElementById("wrongmodal");
-            var span = document.getElementsByClassName("wrongclose")[0];
-            modal.style.display = "block";
-
-            span.onclick = function () {
-                modal.style.display = "none";
-            }
-        } else if (e.target.value !== answer && turnCounter % 2 === 0) {
             var wagerAmount = wager.value;
             var integer = parseInt(wagerAmount, 10);
 
@@ -205,6 +240,22 @@ answerButtons.addEventListener('click', function (e) {
             span.onclick = function () {
                 modal.style.display = "none";
             }
+
+        } else if (e.target.value !== answer && turnCounter % 2 === 0) {
+            var wagerAmount = wager.value;
+            var integer = parseInt(wagerAmount, 10);
+
+            ascore = ascore - integer;
+            scorea.textContent = ascore;
+            wager.value = '10';
+            var modal = document.getElementById("wrongmodal");
+            var span = document.getElementsByClassName("wrongclose")[0];
+            modal.style.display = "block";
+
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
         }
 
         questionCounter++;
@@ -264,15 +315,46 @@ answerButtons.addEventListener('click', function (e) {
 
 
     };
+    checkWinner();
 
     // checkWinner();
 })
-console.log(ablueButton.backgroundColor);
 
-// function checkWinner() {
-//     if (ascore >= 1000 && ablueButton.backgroundColor === 'white' && ayellowButton.backgroundColor === 'white' && aredButton.backgroundColor === 'white' && agreenButton.backgroundColor === 'white') {
-//         alert('A is the winner');
-//     } else if (bscore >= 1000 && bblueButton.backgroundColor === 'white' && byellowButton.backgroundColor === 'white' && bredButton.backgroundColor === 'white' && bgreenButton.backgroundColor === 'white') {
-//         alert('B is the winner');
-//     }
-// }
+reset.addEventListener('click', function (e) {
+    scorea.textContent = "0";
+    scoreb.textContent = "0";
+    ablueButton.style.backgroundColor = 'blue';
+    ayellowButton.style.backgroundColor = 'yellow';
+    aredButton.style.backgroundColor = 'red';
+    agreenButton.style.backgroundColor = 'green';
+    bblueButton.style.backgroundColor = 'blue';
+    byellowButton.style.backgroundColor = 'yellow';
+    bredButton.style.backgroundColor = 'red';
+    bgreenButton.style.backgroundColor = 'green';
+})
+
+
+
+
+function checkWinner() {
+    var finalScoreA = parseInt(scorea.textContent, 10);
+    var finalScoreB = parseInt(scoreb.textContent, 10);
+
+    if (finalScoreA >= 1000 && aSlicesArray.length === 0) {
+        var modal = document.getElementById("awinsmodal");
+        var span = document.getElementsByClassName("awinsclose")[0];
+        modal.style.display = "block";
+
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+    } else if (finalScoreB >= 1000 && bSlicesArray.length === 0) {
+        var modal = document.getElementById("bwinsmodal");
+        var span = document.getElementsByClassName("bwinsclose")[0];
+        modal.style.display = "block";
+
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+    }
+}

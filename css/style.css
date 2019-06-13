@@ -238,3 +238,182 @@
     text-decoration: none;
     cursor: pointer;
   }
+  /*a turn modal*/
+  .aturnmodal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    padding-top: 0; /* Location of the box */
+    /* left: 0;
+    top: 0; */
+    width: 100%; 
+    height: 100%; 
+    margin: 0 auto;
+    /*overflow: auto;  Enable scroll if needed */
+    /*background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); Black w/ opacity*/
+    background-color: rgba(255, 255, 255, .6);
+    margin-top: 0;
+  }
+
+  
+  /* Modal Content */
+  .aturn-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    height: 200px;
+    width: 400px;
+  }
+  
+  /* The Close Button */
+  .aturnclose {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .aturnclose:hover,
+  .aturnclose:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /*b turn modal*/
+  .bturnmodal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    padding-top: 0; /* Location of the box */
+    /* left: 0;
+    top: 0; */
+    width: 100%; 
+    height: 100%; 
+    margin: 0 auto;
+    /*overflow: auto;  Enable scroll if needed */
+    /*background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); Black w/ opacity*/
+    background-color: rgba(255, 255, 255, .6);
+    margin-top: 0;
+  }
+
+  
+  /* Modal Content */
+  .bturn-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    height: 200px;
+    width: 400px;
+  }
+  
+  /* The Close Button */
+  .bturnclose {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .bturnclose:hover,
+  .bturnclose:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  #reset {
+      margin-left: 650px;
+  }
+
+  /*A wins modal*/
+  .awinsmodal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    padding-top: 0; /* Location of the box */
+    /* left: 0;
+    top: 0; */
+    width: 100%; 
+    height: 100%; 
+    margin: 0 auto;
+    /*overflow: auto;  Enable scroll if needed */
+    /*background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); Black w/ opacity*/
+    background-color: rgba(255, 255, 255, .6);
+    margin-top: 0;
+  }
+
+  
+  /* Modal Content */
+  .awins-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    height: 200px;
+    width: 400px;
+  }
+  
+  /* The Close Button */
+  .awinsclose {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .awinsclose:hover,
+  .awinsclose:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /*B wins modal*/
+  .bwinsmodal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    padding-top: 0; /* Location of the box */
+    /* left: 0;
+    top: 0; */
+    width: 100%; 
+    height: 100%; 
+    margin: 0 auto;
+    /*overflow: auto;  Enable scroll if needed */
+    /*background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); Black w/ opacity*/
+    background-color: rgba(255, 255, 255, .6);
+    margin-top: 0;
+  }
+
+  
+  /* Modal Content */
+  .bwins-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    height: 200px;
+    width: 400px;
+  }
+  
+  /* The Close Button */
+  .bwinsclose {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .bwinsclose:hover,
+  .bwinsclose:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
