@@ -18,4 +18,5 @@
 -A wider target for user input.  
 -Remove the radio buttons before the questions load
 -Modal to indicate which player's turn it is.  
+-Incorrect model would tell you what the right answer is.  
 
