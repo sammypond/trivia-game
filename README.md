@@ -16,3 +16,5 @@
 -If you do not click exactly on the radio button target the game will recognize the input as false, even if your intended target was the correct choice. 
 6. Features to add / wishlist
 -A wider target for user input.  
+-Remove the radio buttons before the questions load
+-Modal to indicate which player's turn it is.  
